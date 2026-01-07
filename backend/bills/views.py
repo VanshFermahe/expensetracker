@@ -19,17 +19,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 # ----------------------------
 # User Registration API
 # ----------------------------
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-from django.contrib.auth.models import User
-from rest_framework.decorators import action
-from django.contrib.auth.hashers import make_password
-from .serializers import UserRegisterSerializer
 
 class RegisterViewSet(APIView):
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
+        serializer = UserRegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
